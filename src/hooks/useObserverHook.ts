@@ -3,18 +3,25 @@ import { useEffect } from "react";
 let observer: IntersectionObserver | null = null;
 
 const useObserverHook = (
-  ele: HTMLElement,
-  callback: Function,
-  watch: Array<any> = []
+  ele: string,
+  callback: (entries: IntersectionObserverEntry[]) => void,
+  watch?: Array<any>
 ) => {
   useEffect(() => {
-    observer = new IntersectionObserver((entries) => {
-      callback?.(entries);
-    });
-    observer.observe(ele);
+    const node = document.querySelector(ele);
+    if (node) {
+      observer = new IntersectionObserver((entries) => {
+        callback && callback(entries);
+      });
+      observer.observe(node);
+    }
+
     return () => {
-      if (observer) {
-        observer.unobserve(ele);
+      if (observer && node) {
+        // 解绑元素
+        observer.unobserve(node);
+
+        // 停止监听
         observer.disconnect();
       }
     };
