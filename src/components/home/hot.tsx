@@ -42,7 +42,7 @@ const Hot: FC<Props> = (props) => {
       <div className={s.hot_lists}>
         {house.map((item) => {
           return (
-            <div className={s.hot_lists_item}>
+            <div className={s.hot_lists_item} key={item.img}>
               <img src={item.img} alt={item.img} className={s.img} />
               <div className={s.hot_title}>{item.title}</div>
               <div className={s.hot_info}>{item.info}</div>

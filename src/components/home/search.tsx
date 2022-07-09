@@ -3,13 +3,13 @@ import { Picker, List, Calendar, Button } from "antd-mobile";
 import dayjs from "dayjs";
 import s from "./index.less";
 
-type Source = {
+export type City = {
   value: string;
   label: string;
 };
 
 export interface Props {
-  citys: Source[][];
+  citys: City[][];
   citysLoading: boolean;
 }
 
@@ -73,7 +73,7 @@ const Search: FC<Props> = (props) => {
           <List>
             <List.Item
               onClick={clickCalendar}
-              extra={timers || "可选时间"}
+              extra={timers || "选择时间"}
               arrow={false}
             >
               出租时间

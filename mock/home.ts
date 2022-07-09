@@ -1,7 +1,5 @@
-import { defineMock } from "umi";
-
-export default defineMock({
-  "POST /api/commons/citys": (req, res) => {
+export default {
+  "POST /api/commons/citys": (req: any, res: any) => {
     res.status(200).json([
       [
         { label: "杭州", value: "10001" },
@@ -9,4 +7,4 @@ export default defineMock({
       ],
     ]);
   },
-});
+};
