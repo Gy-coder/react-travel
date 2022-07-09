@@ -17,7 +17,7 @@ const useHttpHook = ({
   body = {},
   watch = [],
 }: Type) => {
-  const [result, setResult] = useState<City[][]>([[]]);
+  const [result, setResult] = useState<any>(undefined);
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     Http({
