@@ -33,7 +33,7 @@
 }
 
 .hot_lists_item {
-  width: 49%;
+  width: 48%;
   margin-bottom: 15px;
   padding: 12px;
   background: #fff;
@@ -56,6 +56,11 @@
   font-size: 16px;
   color: #8a9094;
   white-space: pre-wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 .hot_price {
   font-size: 15px;

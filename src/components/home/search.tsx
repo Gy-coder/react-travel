@@ -1,7 +1,15 @@
 import React, { FC, useRef, useState } from "react";
-import { Picker, List, Calendar, Button } from "antd-mobile";
+import {
+  Picker,
+  List,
+  Calendar,
+  Button,
+  Toast,
+  SpinLoading,
+} from "antd-mobile";
 import dayjs from "dayjs";
 import s from "./index.less";
+import { history } from "umi";
 
 export type City = {
   value: string;
@@ -14,7 +22,7 @@ export interface Props {
 }
 
 const Search: FC<Props> = (props) => {
-  const { citys, citysLoading } = props;
+  const { citys = [[]], citysLoading } = props;
   const [visiblePicker, setVisiblePicker] = useState<boolean>(false);
   const [visibleCalendar, setVisibleCalendar] = useState<boolean>(false);
   const [selectCity, setSelectedCity] = useState<string | undefined>();
@@ -29,6 +37,29 @@ const Search: FC<Props> = (props) => {
   const chooseCity = (city: (string | null)[]) =>
     setSelectedCity(city[0] as string);
   const valuesList = citys[0].map((item) => item.value);
+
+  const handleClick = () => {
+    if (!selectCity) {
+      Toast.show({
+        icon: "fail",
+        content: "您没有选择城市",
+      });
+      return;
+    }
+    if (!timers) {
+      Toast.show({
+        icon: "fail",
+        content: "您没有选择日期",
+      });
+      return;
+    }
+    history.push({
+      pathname: "/search",
+      search: `code=${selectCity}&startTime=${timers.split("~")[0]}&endTime=${
+        timers.split("~")[1]
+      }`,
+    });
+  };
 
   const handleCalenderConfirm = (val: [Date, Date] | null) => {
     state.current += 1;
@@ -59,7 +90,9 @@ const Search: FC<Props> = (props) => {
             </List.Item>
           </List>
         </div>
-        {!citysLoading && (
+        {citysLoading ? (
+          <SpinLoading style={{ "--size": "48px" }} />
+        ) : (
           <Picker
             columns={citys}
             visible={visiblePicker}
@@ -82,7 +115,7 @@ const Search: FC<Props> = (props) => {
         </div>
       </div>
       <div className={s.button_wrapper}>
-        <Button color="danger" size="large" block>
+        <Button color="danger" size="large" block onClick={handleClick}>
           搜索民宿
         </Button>
       </div>

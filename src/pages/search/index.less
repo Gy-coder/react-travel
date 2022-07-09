@@ -1,0 +1,50 @@
+@import "../../assets/mixin.less";
+
+.search_result {
+  width: 100%;
+  margin-top: 40px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+img {
+  width: 120px;
+  height: 86px;
+  object-fit: cover;
+}
+
+.search_item {
+  .flex(row, flex-start);
+  height: 100px;
+  padding: 6px;
+  background: #fff;
+  margin-bottom: 6px;
+}
+
+.search_item_right {
+  .flex(column, space-between);
+  flex: 1;
+  height: 90px;
+  margin-left: 16px;
+}
+
+.search_title,
+.search_price {
+  width: 100%;
+}
+
+.search_title {
+  font-size: 20px;
+}
+
+.search_price {
+  color: #ff4d6a;
+  font-size: 16px;
+}
+
+.customSkeleton {
+  --width: 95%;
+  --height: 100px;
+  --border-radius: 8px;
+  margin: 8px;
+}

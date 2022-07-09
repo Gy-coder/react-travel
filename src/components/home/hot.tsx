@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import s from "./index.less";
 export interface Props {}
 
-type House = {
+export type House = {
   img?: string;
   title: string;
   info: string;
