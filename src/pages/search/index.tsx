@@ -6,6 +6,7 @@ import { useLocation } from "umi";
 import qs from "query-string";
 import s from "./index.less";
 import useImgHook from "@/hooks/useImgHook";
+import { ShowLoading } from "@/components";
 
 export interface Props {}
 
@@ -120,13 +121,14 @@ const Search: FC<Props> = (props) => {
               );
             })}
           </div>
-          {loadingVisible ? (
+          {/* {loadingVisible ? (
             <div className={s.loading} id="loading">
               loading
             </div>
           ) : (
             <div>没有数据了</div>
-          )}
+          )} */}
+          <ShowLoading isLoading={loadingVisible} loadingId="loading" />
         </>
       )}
     </div>
