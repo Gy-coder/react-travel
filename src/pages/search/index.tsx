@@ -4,9 +4,10 @@ import { useHttpHook, useObserverHook } from "@/hooks";
 import { House } from "@/components/home/hot";
 import { useLocation } from "umi";
 import qs from "query-string";
-import s from "./index.less";
 import useImgHook from "@/hooks/useImgHook";
 import { ShowLoading } from "@/components";
+import { CommonEnum } from "../../enums";
+import s from "./index.less";
 
 export interface Props {}
 
@@ -56,7 +57,7 @@ const Search: FC<Props> = (props) => {
    * 4，监听loading变化，拼装数据
    */
 
-  useObserverHook("#loading", (entries) => {
+  useObserverHook("#" + CommonEnum.LOADING_ID, (entries) => {
     if (entries[0].isIntersecting && !loading) {
       setPage({
         ...page,
@@ -121,14 +122,10 @@ const Search: FC<Props> = (props) => {
               );
             })}
           </div>
-          {/* {loadingVisible ? (
-            <div className={s.loading} id="loading">
-              loading
-            </div>
-          ) : (
-            <div>没有数据了</div>
-          )} */}
-          <ShowLoading isLoading={loadingVisible} loadingId="loading" />
+          <ShowLoading
+            isLoading={loadingVisible}
+            loadingId={CommonEnum.LOADING_ID}
+          />
         </>
       )}
     </div>
