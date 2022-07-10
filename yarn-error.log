@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/gy./.nvm/versions/node/v14.18.1/bin/node /usr/local/Cellar/yarn/1.22.18/libexec/bin/yarn.js add -D @types/react-awesome-swiper
+  /Users/gy./.nvm/versions/node/v14.18.1/bin/node /usr/local/Cellar/yarn/1.22.18/libexec/bin/yarn.js add -D @types/import { CloseOutline } from think-react-store
 
 PATH: 
   /Users/gy./.rvm/gems/ruby-3.0.0/bin:/Users/gy./.rvm/gems/ruby-3.0.0@global/bin:/Users/gy./.rvm/rubies/ruby-3.0.0/bin:/Users/gy./.nvm/versions/node/v14.18.1/bin:/usr/local/opt/node@12/bin:/usr/local/opt/go@1.9/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/usr/local/mysql/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/go/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/gy./.rvm/gems/ruby-3.0.0/bin:/Users/gy./.rvm/gems/ruby-3.0.0@global/bin:/Users/gy./.rvm/rubies/ruby-3.0.0/bin:/usr/local/opt/node@12/bin:/usr/local/opt/go@1.9/bin:/opt/anaconda3/bin:/opt/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/usr/local/mysql/bin:/usr/local/Cellar/go/1.7.6/bin:/Users/gy./.rvm/bin:/usr/local/Cellar/go/1.7.6/bin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.npmmirror.com/@types%2freact-awesome-swiper: [NOT_FOUND] @types/react-awesome-swiper not found
+  Error: https://registry.npmmirror.com/@types%2fimport: [NOT_FOUND] @types/import not found
       at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.18/libexec/lib/cli.js:66138:18)
       at Request.self.callback (/usr/local/Cellar/yarn/1.22.18/libexec/lib/cli.js:140883:22)
       at Request.emit (events.js:400:28)
@@ -46,6 +46,7 @@ npm manifest:
       "query-string": "^7.1.1",
       "react-awesome-swiper": "^1.4.16",
       "react-router-dom": "^6.3.0",
+      "think-react-store": "^1.6.71",
       "umi": "^4.0.6"
     },
     "devDependencies": {
