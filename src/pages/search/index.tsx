@@ -1,12 +1,16 @@
-import React, { FC, useEffect, useRef, useState } from "react";
-import { Divider, PageIndicator, SearchBar, Skeleton } from "antd-mobile";
+import React, { FC, useEffect, useState } from "react";
+import { SearchBar, Skeleton } from "antd-mobile";
 import { useHttpHook, useObserverHook } from "@/hooks";
-import s from "./index.less";
 import { House } from "@/components/home/hot";
+import { useLocation } from "umi";
+import qs from "query-string";
+import s from "./index.less";
 
 export interface Props {}
 
 const Search: FC<Props> = (props) => {
+  const { search } = useLocation();
+  const { code, startTime, endTime } = qs.parse(search);
   const [houseName, setHouseName] = useState("");
   const [page, setPage] = useState({
     pageSize: 8,
@@ -14,15 +18,33 @@ const Search: FC<Props> = (props) => {
   });
   const [houseLists, setHouseLists] = useState<House[]>([]);
   const [loadingVisible, setLoadingVisible] = useState(true);
+  const [houseSubmitName, setHouseSubmitName] = useState("");
   const handleChange = (val: string) => setHouseName(val);
-  const handleCancel = () => setHouseName("");
-  const handleSearch = (val: string) => {};
+  const handleCancel = () => {
+    _handleSearch("");
+  };
+  const handleSearch = (val: string) => {
+    _handleSearch(val);
+  };
+  const _handleSearch = (val: string) => {
+    setHouseName(val);
+    setHouseSubmitName(val);
+    setPage({
+      pageSize: 8,
+      pageNum: 1,
+    });
+    setHouseLists([]);
+  };
   const [houses, loading] = useHttpHook({
     url: "/house/search",
     body: {
       ...page,
+      houseName,
+      code,
+      startTime,
+      endTime,
     },
-    watch: [page.pageNum],
+    watch: [page, houseSubmitName],
   });
 
   /**
@@ -56,7 +78,6 @@ const Search: FC<Props> = (props) => {
 
   return (
     <div className={s.search_page}>
-      {JSON.stringify(page)}
       <SearchBar
         style={{ "--background": "#ffffff", margin: "16px 8px" }}
         placeholder="请输入内容"
@@ -64,6 +85,7 @@ const Search: FC<Props> = (props) => {
         onChange={handleChange}
         onCancel={handleCancel}
         onSearch={handleSearch}
+        showCancelButton
       />
       {houseLists.length === 0 ? (
         <div style={{ margin: "16px 8px" }}>
