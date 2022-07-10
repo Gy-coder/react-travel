@@ -18,7 +18,6 @@ const useImgHook = (
 ) => {
   useEffect(() => {
     const nodes = document.querySelectorAll(ele);
-    console.log(ele, nodes);
     if (nodes && nodes.length > 0) {
       observer = new IntersectionObserver((entries) => {
         callback && callback(entries);

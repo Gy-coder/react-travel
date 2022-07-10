@@ -10,6 +10,7 @@ import {
 import dayjs from "dayjs";
 import s from "./index.less";
 import { history } from "umi";
+import BlockButton from "../blockButton";
 
 export type City = {
   value: string;
@@ -114,11 +115,7 @@ const Search: FC<Props> = (props) => {
           </List>
         </div>
       </div>
-      <div className={s.button_wrapper}>
-        <Button color="danger" size="large" block onClick={handleClick}>
-          搜索民宿
-        </Button>
-      </div>
+      <BlockButton onClick={handleClick}>搜索民宿</BlockButton>
       <Calendar
         style={{
           display: visibleCalendar ? "block" : "none",
