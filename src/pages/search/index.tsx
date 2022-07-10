@@ -5,6 +5,7 @@ import { House } from "@/components/home/hot";
 import { useLocation } from "umi";
 import qs from "query-string";
 import s from "./index.less";
+import useImgHook from "@/hooks/useImgHook";
 
 export interface Props {}
 
@@ -76,6 +77,8 @@ const Search: FC<Props> = (props) => {
     }
   }, [loading]);
 
+  useImgHook(".search_item_img", (entries) => {});
+
   return (
     <div className={s.search_page}>
       <SearchBar
@@ -103,7 +106,12 @@ const Search: FC<Props> = (props) => {
             {houseLists.map((item: House) => {
               return (
                 <div className={s.search_item} key={item.id}>
-                  <img src={item.img} alt="" />
+                  <img
+                    src={require("../../assets/blank.png")}
+                    alt=""
+                    className="search_item_img"
+                    data-src={item.img}
+                  />
                   <div className={s.search_item_right}>
                     <div className={s.search_title}>{item.title}</div>
                     <div className={s.search_price}>¥{item.price}</div>
