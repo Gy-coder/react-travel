@@ -15,10 +15,7 @@ const Search: FC<Props> = (props) => {
   const { search } = useLocation();
   const { code, startTime, endTime } = qs.parse(search);
   const [houseName, setHouseName] = useState("");
-  const [page, setPage] = useState({
-    pageSize: 8,
-    pageNum: 1,
-  });
+  const [page, setPage] = useState(CommonEnum.PAGE);
   const [houseLists, setHouseLists] = useState<House[]>([]);
   const [loadingVisible, setLoadingVisible] = useState(true);
   const [houseSubmitName, setHouseSubmitName] = useState("");
@@ -32,10 +29,7 @@ const Search: FC<Props> = (props) => {
   const _handleSearch = (val: string) => {
     setHouseName(val);
     setHouseSubmitName(val);
-    setPage({
-      pageSize: 8,
-      pageNum: 1,
-    });
+    setPage(CommonEnum.PAGE);
     setHouseLists([]);
   };
   const [houses, loading] = useHttpHook({
