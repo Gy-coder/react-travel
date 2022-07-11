@@ -5,10 +5,19 @@ import s from "./index.less";
 export interface Props {
   visible: boolean;
   onClose: () => void;
+  onConfirmClick?: () => void;
+  commentContent?: string;
+  onCommentContentChange?: (val: string) => void;
 }
 
 const Modal: FC<Props> = (props) => {
-  const { visible, onClose } = props;
+  const {
+    visible,
+    onClose,
+    onConfirmClick,
+    commentContent,
+    onCommentContentChange,
+  } = props;
   return (
     <Popup visible={visible} onClose={onClose} showCloseButton>
       <div className={s.modal}>
@@ -16,11 +25,13 @@ const Modal: FC<Props> = (props) => {
           <div className={s.modal_textarea}>
             <TextArea
               placeholder={"请输入评论内容......"}
+              value={commentContent}
+              onChange={onCommentContentChange}
               showCount
               maxLength={200}
             />
           </div>
-          <Button color="danger" block>
+          <Button color="danger" block onClick={onConfirmClick}>
             评论
           </Button>
         </div>

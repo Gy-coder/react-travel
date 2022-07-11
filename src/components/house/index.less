@@ -28,9 +28,7 @@
 }
 
 .comment {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  height: 100%;
 }
 
 .comment_title {
@@ -41,7 +39,7 @@
 }
 
 .comment_lists {
-  margin: 12px 12px 60px 12px;
+  margin: 6px 12px;
   flex: 1;
   overflow: auto;
 }
@@ -71,11 +69,11 @@
 .comment_right_bottom {
   color: rgba(0, 0, 0, 0.4);
   font-size: 14px;
+  padding: 12px 0 0 0;
 }
 
 .footer {
   .flex(row, flex-start, center);
-  margin: -50px 0;
   width: 100%;
   background: #fff;
   height: 40px;
@@ -83,4 +81,7 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 20px;
   color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: calc(100% + -100px);
+  left: 0;
 }
