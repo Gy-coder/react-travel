@@ -6,11 +6,15 @@ import Footer from "../../components/house/footer";
 import { useStoreHook } from "think-react-store";
 import { useObserverHook } from "@/hooks";
 import { CommonEnum } from "@/enums";
+import { useLocation } from "umi";
+import qs from "query-string";
 import s from "./index.less";
 
 export interface Props {}
 
 const House: FC<Props> = (props) => {
+  const { search } = useLocation();
+  const { id } = qs.parse(search);
   const {
     house: {
       detail,

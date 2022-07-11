@@ -12,6 +12,10 @@ const Home: FC<Props> = (props) => {
     url: "/commons/citys",
   });
 
+  const [houses] = useHttpHook({
+    url: "/house/hot",
+  });
+
   return (
     <div>
       <Header />
@@ -19,7 +23,7 @@ const Home: FC<Props> = (props) => {
         citys={citys as City[][]}
         citysLoading={citysLoading as boolean}
       />
-      <Hot />
+      <Hot houses={houses} />
     </div>
   );
 };

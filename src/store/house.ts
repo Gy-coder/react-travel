@@ -33,15 +33,6 @@ export default {
       };
     },
     resetData(state: any, payload: any) {
-      console.log({
-        ...state,
-        // detail: {},
-        comments: [],
-        page: CommonEnum.PAGE,
-        showLoading: true,
-        reloadCommentsNum: 0,
-        ...payload,
-      });
       return {
         ...state,
         // detail: {},
