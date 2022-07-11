@@ -2,12 +2,10 @@ import React, { FC, useState } from "react";
 import { TabBar } from "antd-mobile";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
-  AppOutline,
-  MessageOutline,
-  MessageFill,
-  UnorderedListOutline,
-  UserOutline,
-} from "antd-mobile-icons";
+  AiFillHome,
+  AiOutlineUser,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
 import "./index.less";
 
 export interface Props {
@@ -28,17 +26,17 @@ const MenuBar: FC<Props> = (props) => {
     {
       key: "/",
       title: "首页",
-      icon: <UnorderedListOutline />,
+      icon: <AiFillHome />,
     },
     {
       key: "/order",
-      title: "我的消息",
-      icon: <MessageFill />,
+      title: "我的订单",
+      icon: <AiOutlineShoppingCart />,
     },
     {
       key: "/user",
       title: "个人中心",
-      icon: <UserOutline />,
+      icon: <AiOutlineUser />,
     },
   ];
   return (
