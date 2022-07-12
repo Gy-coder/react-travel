@@ -45,7 +45,7 @@ export default {
       });
       console.log(result);
       if (result) {
-        Toast.show({ icons: "success", content: "编辑成功" });
+        Toast.show({ icon: "success", content: "编辑成功" });
         history.push("/user");
       }
     },
@@ -57,8 +57,11 @@ export default {
       if (result) {
         // console.log(urlGet('from'))
         cookie.set("user", result);
-        history.push(urlGet("from"));
-        Toast.success("登录成功");
+        history.push("/order");
+        Toast.show({
+          icon: "success",
+          content: "登录成功",
+        });
       }
     },
     async registerAsync(dispatch, rootState, payload) {
@@ -68,7 +71,7 @@ export default {
       });
       if (result) {
         cookie.set("user", result);
-        Toast.show({ icons: "success", content: '"注册成功"' });
+        Toast.show({ icon: "success", content: "注册成功" });
       }
     },
   },
